@@ -76,7 +76,7 @@ $stateClass = ['ok' => '', 'warning' => 'warning', 'critical' => 'critical', 'ov
         <div>
             <div class="stat-label">Total Balance</div>
             <div class="stat-value <?= $totals['balance'] < 0 ? 'text-red' : '' ?>"><?= e(money($totals['balance'])) ?></div>
-            <div class="stat-sub">Income − Expenses − Savings</div>
+            <div class="stat-sub">Income − expenses − savings</div>
         </div>
     </div>
     <div class="card stat">
