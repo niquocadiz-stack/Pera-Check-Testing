@@ -1,0 +1,5 @@
+# Uploaded profile pictures: never execute scripts, never list the folder.
+Options -Indexes
+<FilesMatch "\.(php|phtml|phar|php[0-9]|pl|py|cgi|sh)$">
+    Require all denied
+</FilesMatch>
