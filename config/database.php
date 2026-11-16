@@ -10,7 +10,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
-define('APP_NAME', 'Pera Check!');
+define('APP_NAME', 'Putanginamo');
 define('APP_TIMEZONE', 'Asia/Manila');
 define('SESSION_TIMEOUT', 7200); // seconds of inactivity before auto logout
 
