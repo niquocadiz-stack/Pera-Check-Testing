@@ -139,6 +139,17 @@ if (is_post()) {
             flash('error', 'Incorrect password. Your account was not deleted.');
             redirect($self . '#danger');
         }
+                try {
+            $pdo->beginTransaction();
+            $pdo->prepare('DELETE FROM income WHERE user_id = :id')->execute([':id' => $uid]);
+            $pdo->prepare('DELETE FROM expenses WHERE user_id = :id')->execute([':id' => $uid]);
+            $pdo->prepare('DELETE FROM users WHERE id = :id')->execute([':id' => $uid]);
+            $pdo->commit();
+        } catch (PDOException $ex) {
+            if ($pdo->inTransaction()) $pdo->rollBack();
+            flash('error', 'Could not delete the account. Please try again.');
+            redirect($self . '#danger');
+        }
         if ($user['avatar'] && is_file($uploadDir . $user['avatar'])) @unlink($uploadDir . $user['avatar']);
         $pdo->prepare('DELETE FROM users WHERE id = :id')->execute([':id' => $uid]);
         logout_user();
